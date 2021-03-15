@@ -1,0 +1,5 @@
+docker search
+Sudo docker search --filter stars=3 nginx
+sudo docker search --filter stars=3 --filter is-official=true nginx
+docker images #list all images
+docker pull # pull the images from respoitary
