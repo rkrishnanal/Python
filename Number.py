@@ -28,4 +28,7 @@ number=[1,2,8,2,6]
 number.sort(reverse=True)
 print(number)
 
-#tuples (We cannot change the content)
+#tuples (We cannot change the content) #syntax ()
+
+
+#set Syntax{} No index number
