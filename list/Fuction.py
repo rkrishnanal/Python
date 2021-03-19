@@ -28,4 +28,13 @@ def sum ():
     x = 10 #local varabile inside the function
     y= 1
     
+#fuction with parameters
+def fuction (a, b):
+    print(a-b)
+fuction(200,100)
+
+def hi (name):
+    print ("hi" + name)
+hi('radha')
+
 
