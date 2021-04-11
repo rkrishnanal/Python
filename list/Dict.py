@@ -22,8 +22,14 @@
 
 #Python Basic
 
-import tkinter
-import pypdf2
-from PIL import Image,Imagepk
+# import tkinter
+# import pypdf2
+# from PIL import Image,Imagepk
+# 
+# print('is this working') 
 
-print('is this working') 
+#x=input() 
+
+no=int(input("enter the number"))
+print(no**3)
+

@@ -21,13 +21,22 @@ myset.add(2)
 to_cal_sec=24*60*60
 Name_of_unit="seconds"
 
-print(f" 500 day {20*to_cal_sec} {Name_of_unit}")
+#print(f" 500 day {20*to_cal_sec} {Name_of_unit}")
 
-def days_to_count(num_of_days, custom_message):
-    print(f"{num_of_days} days are {num_of_days * to_cal_sec} {Name_of_unit}")
-    print(custom_message) 
-days_to_count(15,"looks good")
+def days_to_count(num_of_days):
+    if num_of_days > 0:
+       return(f"{num_of_days} days are {num_of_days * to_cal_sec} {Name_of_unit}")
+    else:
+         return "you entered a negative"
+    #print(custom_message) 
+#days_to_count(15,"looks good")
+##my_var = days_to_count(30, "retur")
+#print(my_var)
+user_input=input(" Please provide the input")
+int_cal=int(user_input)
 
+cal_int=days_to_count(int_cal)
+print(cal_int)
 
 
 
