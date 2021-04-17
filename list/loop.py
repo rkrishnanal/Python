@@ -59,3 +59,21 @@
 #     down_payment = 0.4 *price
 #     print(f"downpayment : ${down_payment}")
         
+# while
+# i=1
+# while i<=100:
+    # r=i%3 and i%5
+    # if r==0:
+        # r=r+1
+# else:
+    # print(i)
+# i=i+1
+
+import os
+ip=['8.8.8.8','4.4.4.4','facebook.com']
+for ipl in ip:
+    response = os.popen('ping' + ipl).read()
+    if 'transmitted' in response:
+        print(ipl ,'is up')
+else:
+    print(ipl, 'is down')

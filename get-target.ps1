@@ -18,3 +18,4 @@ Write-Host $targetage
 # copying scirpt 
 # copy ./if.ps1 ./get-target.ps1
 
+Get-Date.
