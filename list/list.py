@@ -35,3 +35,13 @@ print(z)
 #revers
 car.reverse()
 print(car)
+
+
+#LIST
+friends = ["rajesh","ramesh",1.5,1.7]
+lucky_number = [4,12,8]
+friends.extend(lucky_number)
+#append add the item end of the list
+#insert 
+print(friends + lucky_number)
+
