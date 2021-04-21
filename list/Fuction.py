@@ -1,40 +1,46 @@
-# Block of code
-def test():
-    print("radha")
-test() #calling the function 
+# # Block of code
+# def test():
+#     print("radha")
+# test() #calling the function 
 
-#function with parameter
-def sum(a,b):
-    #a = 25
-    #b = 50
-    z = a + b
-    print(z)
-sum(100,300)
-def mydate (name,age):
-    print(mydate)
-mydate("radha",32)
+# #function with parameter
+# def sum(a,b):
+#     #a = 25
+#     #b = 50
+#     z = a + b
+#     print(z)
+# sum(100,300)
+# def mydate (name,age):
+#     print(mydate)
+# mydate("radha",32)
 
-#return Value
-def marks (English,Tamil):
-    total = English + Tamil
-    #print (total)
-    return marks
-marks(50,90)
+# #return Value
+# def marks (English,Tamil):
+#     total = English + Tamil
+#     #print (total)
+#     return marks
+# marks(50,90)
 
-#Local and global Variable
-x = 10 # global outisde the funtion
-y = 30
-def sum ():
-    x = 10 #local varabile inside the function
-    y= 1
+# #Local and global Variable
+# x = 10 # global outisde the funtion
+# y = 30
+# def sum ():
+#     x = 10 #local varabile inside the function
+#     y= 1
     
-#fuction with parameters
-def fuction (a, b):
-    print(a-b)
-fuction(200,100)
+# #fuction with parameters
+# def fuction (a, b):
+#     print(a-b)
+# fuction(200,100)
 
-def hi (name):
-    print ("hi" + name)
-hi('radha')
+# def hi (name):
+#     print ("hi" + name)
+# hi('radha')
+#
+# def say_hi(name, age):
+    # print("I am "  + name +", you are " + int(age))
+# say_hi("radha", 32) 
 
-
+def cum (num):
+    return num*num*num
+print(cum(4))  
