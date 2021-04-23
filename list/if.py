@@ -13,7 +13,7 @@
 # if is_male and is_tall:
 
 #comparsion statements
-score=int(input("enter the input value :  "))
+#score=int(input("enter the input value :  "))
 
 # if score >= 50:
 #     print("you have passed the exam")
@@ -21,10 +21,26 @@ score=int(input("enter the input value :  "))
 
 #   elif score < 35:
       
-number = float(input("Enter the value: "))
-if number > 0:
-    print('the value is positive')
-elif number < 0:
-    print("the is negative")
+# number = float(input("Enter the value: "))
+# if number > 0:
+    # print('the value is positive')
+# elif number < 0:
+    # print("the is negative")
+# else:
+    # print("the value is zero")
+
+Num1 = float(input("Enter the number: "))
+Num2 = float(input("Enter the number: "))
+operator = input ("Enter the operator: ")
+if operator == "+":
+    print (Num1 + Num2)
+elif operator == "-":
+    print (Num1 - Num2)
+elif operator == "*":
+    print (Num1*Num2)
+elif operator == "/":
+    print (Num1/Num2)
 else:
-    print("the value is zero")
+    print("please enter the correcto operator")
+
+

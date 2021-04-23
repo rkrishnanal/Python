@@ -1,0 +1,73 @@
+VMWARE COMMANDs
+esxicli hardware cpu list  >>>To check the hardware
+esxicli hardware memory get  >> To check memory detaisl
+
+
+Performance issue
+
+esxtop 
+
+c-cpuview
+m-memory view
+n-netowrkview
+v -vmview
+
+To captiure performance
+esxop -b(batch) -d(delay) -n(no.iteration) 100(count) > filename.csv
+
+
+To Volumes
+
+ls/vmfs/volumes/(datastorage name)
+
+To updated patching through command
+
+esxcli software vib update --depo=ls/vmfs/volumes/(datastorage name)/Patch filename
+
+to check 
+vmare -vl
+
+FULL PATCHES Detials
+
+esxcli software vib list | more
+
+#df -h  shows the disk space of the files
+
+#SUPPORT LOGS
+vm-support -w /vmfs/volumes/(datastorage name)
+
+ping -b(boardcast)  8.8.8.8
+
+#Firewall
+esxcli network firewall get >> To know firewall details
+esxcli network firewall ruleset list >> show all the list
+esxcli network firewall refresh
+esxcli hardware
+esxcli software
+
+#Restart service
+services.sh Restart
+
+#performance
+esxtop
+
+#LOGS
+cd /var/log/
+less 
+
+cat (logname) >> View the LOGS
+Vi (logname) >> edit the log name 
+
+to search network COMMANDs
+esxcli network
+
+Resoruce pool
+logical abstraction of cpu and memory rresoruces
+use resource pool to share , limit and reservation of resource for vms
+Provides better allocating of cpu and memory resources by using resroces pool 
+DRS must be enabled on cluster before creating resource pool.
+
+#LOGS
+hostd.log >> incuding VM and host task  and events communication with the vsphere client
+and vcenter vpax agent and sdk connections
+ 

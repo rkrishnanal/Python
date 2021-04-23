@@ -69,11 +69,29 @@
     # print(i)
 # i=i+1
 
-import os
-ip=['8.8.8.8','4.4.4.4','facebook.com']
-for ipl in ip:
-    response = os.popen('ping' + ipl).read()
-    if 'transmitted' in response:
-        print(ipl ,'is up')
+# import os
+# ip=['8.8.8.8','4.4.4.4','facebook.com']
+# for ipl in ip:
+    # response = os.popen('ping' + ipl).read()
+    # if 'transmitted' in response:
+        # print(ipl ,'is up')
+# else:
+    # print(ipl, 'is down')
+
+#while loop
+
+secert_word="lion"
+guess = ""
+guess_count=0
+guess_limit = 3
+out_of_guess = False
+while guess != secert_word and not (out_of_guess):
+    if guess_count < guess_limit:
+        guess = input("enter the guess: ")
+        guess_count += 1
+    else:
+        out_of_guess = True
+if out_of_guess:
+    print ("out of guesses, you lose")
 else:
-    print(ipl, 'is down')
+    print("you win")
