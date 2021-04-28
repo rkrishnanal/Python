@@ -11,3 +11,4 @@ $vm | % {$_ -eq $null }
 $vm = 1..12
 $name= @("radha","sivaji","raki")
 $name.foreach("ToUpper")
+get-ciminstan

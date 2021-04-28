@@ -1,0 +1,15 @@
+RTO Recovery Time obejctive how long it take to recover infrastructure
+RPO Recovery point obejctive amount is data loss that is acceptable as a function of time and 
+transcition on progress.
+
+Azure migrate:Server Assessment
+Azure Migrate : Server Migration
+Data Migration assistant
+Azure database Migration service
+Moverr
+
+Steps to Migration
+1. download the Application
+2.start discovry
+3. create Assessment
+4. start replication

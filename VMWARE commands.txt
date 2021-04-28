@@ -1,3 +1,17 @@
+Purple screen on death
+the vmkernel of an esx/esxi host experience a crtical error.
+PSOD contains the memory state at the time of crash that includes
+Esxi verison, Error type uptime and Core dump locations.
+
+Resaons 
+hardware >> Due to DIMM ,cpu , Disk error
+software bugs >> Esxi patch bugs
+Drivers firmware bugs.
+
+COMMDANS FOR PSOD
+cd var/Core
+
+
 VMWARE COMMANDs
 esxicli hardware cpu list  >>>To check the hardware
 esxicli hardware memory get  >> To check memory detaisl
@@ -58,6 +72,9 @@ less
 cat (logname) >> View the LOGS
 Vi (logname) >> edit the log name 
 
+#Vmware vm logs 
+cd /vmsfs/volumes/(datastorage_name)/vm/vm(logname) | more
+
 to search network COMMANDs
 esxcli network
 
@@ -71,3 +88,57 @@ DRS must be enabled on cluster before creating resource pool.
 hostd.log >> incuding VM and host task  and events communication with the vsphere client
 and vcenter vpax agent and sdk connections
  
+ #HA
+ vSphere HA is a new host agent called the Fault Domain Manager, or FDM. T
+ his agent is responsible for monitoring host availability and the power state of protected VMs, with the mission 
+ of restarting protected VMs when a host or VM fails.
+
+ The master host  sends periodic  heartbeats to the slave host so that the slave hosts know
+ that master host is alive
+
+#FAiled SLave host
+when a slave host does not respond to the network heartbeat issued by the master host 
+the master vsphere HA agent tries to identify cause.
+
+#Failed Master host
+when the master host is placed in maintainence mode or crashes the slave hosts 
+detect that the master is no longer issuing heaters
+
+Manager Object ID >> MOID based comes to know either master and slave
+
+#Isolated host
+if the host does not observe election traffic on the managment and cannot
+ping its default gateway, the host isolated 
+
+#VM Storage Failure
+VM n/w failure 
+Array misconfiguration
+Power outrage
+Vm availability is affected host are managed 
+Application with attached crash.
+
+#VM PATCH UPATE COMMDANS
+vmi-cmd hostsvc/maintainence_mode_enter
+esxcli software vib update -d "/vmfs/(Path name)
+
+
+VMWARE COMMANDs
+to know all vms
+vim-cmd /vmsvc/getallvms >> to see all your VM in host
+vim-cmd /vmsvc/power.on (Vim id) >> TO power on vmvc
+vim-cmd /vmsvc/power.off (vim id)
+
+To check COMMANDslit 
+vim-cmd /vmsvc >> list out all vmware details
+
+To unregister Vm
+vim-cmd /vmsvc/unregister 11
+To register Vm
+vim-cmd /solo/register /vmfs/volume/datastorage_name/vmname /vname.vmx
+
+VMWARE FILESYSTEM
+
+.vmsd >> vmware snapshot meta data 
+.vmdk >> vm data files
+.nvramm >> Vm memory
+.vmx >> Vm configuration 
