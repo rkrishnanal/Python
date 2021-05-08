@@ -1,0 +1,34 @@
+go to eventlog 
+
+dfs repplication issue (crtical,error and warning)
+
+dfs replication services need to stop
+
+Adsiedit
+
+domaincontroller >> Domain system volume >> sysvol subscription >> properites >> msdfs enabled(false)
+>> nsdfsr-options (change 1)
+
+Need to change msdfs-enabled (False)(secondary-domaincontroller)
+
+in powershell 
+repadmin /syncall (Primary-DC) /APed (A-All Paritions,P-Push replication,e-Subnets d- distinguish name)
+
+start the service 
+domaincontroller >> Domain system volume >> sysvol subscription >> properites >> msdfs enabled(True)
+
+repadmin /syncall (Primary-DC) /APed
+
+Need to change msdfs-enabled (True)(secondary-domaincontroller)
+invoke-command -computerName (DC1,DC2) -scriptBlock {stop-service}
+invoke-command -computerName (DC1,DC2) -scriptBlock {start-service}
+
+repadmin /replsum
+repadmin /syncall
+
+#DNS backup
+set-location 
+dnscmd dc/zoneexport itraki.co.in itraki.co.in.dnscmd >> backup
+
+#reverse lookup
+add-dnsprimaryzone -networkid "10.2.0.0/27" -replicationScope Domain

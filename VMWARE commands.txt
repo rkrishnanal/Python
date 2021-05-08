@@ -13,13 +13,14 @@ cd var/Core
 
 
 VMWARE COMMANDs
-esxicli hardware cpu list  >>>To check the hardware
-esxicli hardware memory get  >> To check memory detaisl
+esxcli hardware cpu list  >>>To check the hardware
+esxcli hardware memory get  >> To check memory detaisl
 
 
 Performance issue
 
 esxtop 
+h >> list out all options
 
 c-cpuview
 m-memory view
@@ -127,6 +128,13 @@ to know all vms
 vim-cmd /vmsvc/getallvms >> to see all your VM in host
 vim-cmd /vmsvc/power.on (Vim id) >> TO power on vmvc
 vim-cmd /vmsvc/power.off (vim id)
+vim-cmd /vmsvc/power.getstate (Vmid)
+
+#to get world ID
+esxcli vm porcess list
+3 types
+* (soft,hard,force)
+esxcli vm process kill -w (WORLD ID) -T (soft,hard, force)
 
 To check COMMANDslit 
 vim-cmd /vmsvc >> list out all vmware details
@@ -142,3 +150,63 @@ VMWARE FILESYSTEM
 .vmdk >> vm data files
 .nvramm >> Vm memory
 .vmx >> Vm configuration 
+
+VMware Application
+vsca.01a.crop.local:5480
+
+#VM files
+configuration file .vmx
+swap >> vswap
+bios >> nvramm
+log >> .log
+raw device map file >> rdm.vmdk
+Disk descriptor file >> .vmdk
+Disk data file >> flat.vmdk >> 
+snapshot >> .vmsd
+snapshot state file >> .vmsn
+snapshot descriptor file >> 0001.vmdk
+snapshot disk files >> delta.vmdk
+
+Max 32 snapshot able create 
+
+#Conslidation
+
+snapshot Error
+Possbile Cause: Missing delta descriptor file
+A snapshot (delta) file does not have an associate descriptor file
+if the -delta.vmdk has no descriptor file copy and rename
+
+Possbile Cause: Max file size reached
+VMFS-5 the tops file size is about 62TB
+
+Insufficient Space on datastorage
+
+#VM POWER on fails
+
+View the erorr message vmware.log
+looks hints as to why power-on fails
+
+Cause: VM file Missing
+restore the missing files or files from your backup
+
+Cause: VM file Locked
+
+Cause:  Insufficient resource on esxi host
+check cpu,memory and storage resource availability on the esxi host.
+Decrease the cpu and memory reservations on the virtual machince
+
+Cause: ESXI host unresponsive
+
+ping vmkernel network interface
+
+POWER
+
+
+
+
+#Enable and disable maintainence mode
+esxcli system maintainenceMode set --enable True
+esxcli sytem shutdown reboot --reasons Training - delay 10
+
+#POWERCLI COMMDANS
+stop-vm -kill ("VMname") -confirm:$false

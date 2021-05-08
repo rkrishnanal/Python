@@ -13,3 +13,13 @@ Steps to Migration
 2.start discovry
 3. create Assessment
 4. start replication
+
+
+Network Watcher Dia Tools
+ip flow verify >>  check packets allow or denied from VM 
+next hop >> next hop from target vm to destination ip address  
+effective security rules >> Effective NSG rules applied a network interface
+Also spot vulunerablities for VM caused by unncessary open ports
+packet captiure >> Record all of packets sent and from a VM
+connection Troubleshoot >> Check TCP connection from VM to a VM,FQDN,URI or IPv4 Address 
+VPN Troubleshoot >> diagonse health of virtual netwrok gateway or connection    
