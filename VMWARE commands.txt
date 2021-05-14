@@ -26,6 +26,7 @@ c-cpuview
 m-memory view
 n-netowrkview
 v -vmview
+f-- get options
 
 To captiure performance
 esxop -b(batch) -d(delay) -n(no.iteration) 100(count) > filename.csv
@@ -210,3 +211,46 @@ esxcli sytem shutdown reboot --reasons Training - delay 10
 
 #POWERCLI COMMDANS
 stop-vm -kill ("VMname") -confirm:$false
+
+ESX not respond
+all of which heartbeat being receviced from the host vcenter
+Some comman reasons
+ * network connectivity issues
+ * hostd is the not running successfully
+  * vpax is not running successfully
+
+Verify that host is accessbile from vcenter server or vsphere client
+tyr to reconnecting the esxi host.
+ping to the host 
+
+HOST DISCONNECTS
+A user right clicks the host and DISCONNECTS
+the host license
+
+TO RESTART THE MANAAGEMENT AGENT USING THE client
+run the following commands to restart the vpxa  and hostd
+
+#etc /init.d/hostd restart
+#etc/init.d/vpxa restart  
+
+To restart all managment agents on the host
+
+#service.sh restart
+
+TO services THAT WILL B RESTARTED CANBE SEEN IF your
+
+chkconfig -isolated
+
+To check the which services on chkconfig --list:
+
+RESETTING THE MANAAGEMENT N/W/INTERFACE IN ESXI AS PART OF TROUBLESHOOTING
+
+esxcli network ip interface - e false -i vmk0; to disable
+esxcli network ip interface -e truse -i vmk0; to enabled
+
+FIND/cat/Grep
+These commands are used to find a specific files or text with in the log file
+cat is used to display the contents of a file
+while grep can be used to search for specific text with single or group file 
+
+

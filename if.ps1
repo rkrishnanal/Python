@@ -72,7 +72,7 @@ while ($i -lt 15) {
     if ($i -eq 7) {break}
     write-host $i
 }
-
+get-coun
     
 
 
