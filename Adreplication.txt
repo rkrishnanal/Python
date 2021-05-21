@@ -32,3 +32,61 @@ dnscmd dc/zoneexport itraki.co.in itraki.co.in.dnscmd >> backup
 
 #reverse lookup
 add-dnsprimaryzone -networkid "10.2.0.0/27" -replicationScope Domain
+
+DNS TROUBLESHOOTING
+update ptr records
+
+check the zone properites
+Make  SOA referesh interval at 1 min
+
+clear dns cache
+flush and register dns
+ipconfig /flushdns
+ipconfig /registerdns
+
+
+BSOD in DC
+DRSM mode
+
+
+ACTIVE DIRECTORY sites
+    service localization
+
+DNS
+nslookup > ?
+
+
+Active Directory Integrated Zones
+In AD Integrated DNS zone, each server replicates the data with other DNS servers in a domain.
+Active Directory Integrated Zones stores its zone data in Active Directory. 
+Integrated zones can be replicated to all domain controllers in the domain and forest. 
+Active Directory integrated zones use multi-master replication, 
+this means any domain controller running the DNS server service can write updates to the zone for which they are authoritative.
+
+Advantages of Active Directory integrated Zones
+
+    Replication is faster, more secure and efficient.
+    Better redundancy due to zone data being copied to all Domain Controllers
+    Improved Security if secure dynamic update is enabled
+    No need to schedule or manage zone transfers
+
+Non-authoritative name servers do not contain original source files of domain’s zone. 
+They have a cache file for the domains that is constructed from all the DNS lookups done previously. 
+If a DNS server responded for a DNS query which doesn’t have original file is known as a Non-authoritative answer.
+
+An authoritatIn AD Integrated DNS zone, each server replicates the data with other DNS servers in a domain.ive name server is a name server that has the original source files of a domain zone files. 
+The is where the domain administrator has configured the DNS records for a domain. 
+Authoritative DNS server can be master DNS server or its slaves.
+
+FSMO 
+RID:the domain controller assigned to allocated sequence of relative ids to each dc into domain
+PDC: Handles time sync and password replication
+infrastructure master: updating references from object in its domain to an objects from another domain.
+Domain naming master : addition an dremoval of domains in the forest.
+Schema master : DC controllers all updated and modifications to the schema.
+
+
+nltest/dclist:(domainname) - to check all DC in domain
+nltest /parentdomain
+
+EVENT ID 1074 to shutdown
