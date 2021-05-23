@@ -74,7 +74,8 @@ Non-authoritative name servers do not contain original source files of domain’
 They have a cache file for the domains that is constructed from all the DNS lookups done previously. 
 If a DNS server responded for a DNS query which doesn’t have original file is known as a Non-authoritative answer.
 
-An authoritatIn AD Integrated DNS zone, each server replicates the data with other DNS servers in a domain.ive name server is a name server that has the original source files of a domain zone files. 
+An authoritatIn AD Integrated DNS zone, each server replicates the data with other DNS servers 
+in a domain.ive name server is a name server that has the original source files of a domain zone files. 
 The is where the domain administrator has configured the DNS records for a domain. 
 Authoritative DNS server can be master DNS server or its slaves.
 

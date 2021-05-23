@@ -1,0 +1,43 @@
+gpupdate /force is not working
+
+gpupdate /H 
+
+take a hostname
+nslookup (computername)
+SET L
+
+GPRESULT /H GPreport.html
+
+RSOP.MSC
+
+Check the event log 
+
+Download Pssec v2.2  
+
+run psExec64 
+
+use the following command
+rundll32.exe keymgr.dll KRShowkeymgr 
+
+Remove the stored key
+
+GPO composed with two Paritions
+gpc -Group policy container
+gpt -Group policy Template
+No override --Generally the policies set at one level will be overridden in other level, 
+so if don’t want to override this policy under the sub levels of this one you can set this.
+
+The Block inheritance GPO option blocks the group policies inheriting from the top level, 
+and takes effect of this present GPO.
+
+TROUBLESHOOTING GPO
+
+1)    Check Event viewer – its good place to start. Check for any event viewer errors, warnings to see if there is error related to GPO
+2)    Check if the DC can reachable – if it’s testing from a user pc or server check if it’s can reach the DC properly.
+3)    Check the network connectivity and DNS – check if the network connection is okay and also dns settings are correct. If it’s between different subnets make sure dc can reach the target users or computers.
+
+After that we can use the tools provides by the windows server 2012 to analysis the problem. Windows server 2012 provides 3 tools help with GP troubleshooting.
+
+1)    The Group Policy Result Wizard
+2)    GPResult.exe command
+3)    Group Policy Modelling Wizard

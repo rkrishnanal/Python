@@ -1,0 +1,12 @@
+Windows Server hardening involves identifying and remediating security vulnerabilities.
+Organizational Security: Maintain an inventory record for each server that clearly documents 
+its baseline configuration and records each change to the server.
+Windows Server Preparation:Protect newly installed machines from hostile network traffic until the operating system is installed and hardened. 
+Harden each new server in a DMZ network that is not open to the internet.
+Windows Server Installation:Ensure that all appropriate patches, 
+hotfixes and service packs are applied promptly. Security patches resolve known vulnerabilities that attackers 
+could otherwise exploit to compromise a system. After you install Windows Server, 
+immediately update it with the latest patches via WSUS or SCCM.
+User Account Security Hardening
+Network Security Configuration
+Registry Security Configuration
