@@ -86,6 +86,13 @@ use resource pool to share , limit and reservation of resource for vms
 Provides better allocating of cpu and memory resources by using resroces pool 
 DRS must be enabled on cluster before creating resource pool.
 
+USES OF RESORUCES pool
+Flexible hierarchical organiization
+isolation between pools and shared pool
+Access control and delegation
+Seperation os resource and hardware
+
+
 #LOGS
 hostd.log >> incuding VM and host task  and events communication with the vsphere client
 and vcenter vpax agent and sdk connections
@@ -226,6 +233,7 @@ ping to the host
 HOST DISCONNECTS
 A user right clicks the host and DISCONNECTS
 the host license
+ESXI host can disconnect from vcenter due to underlying storage issues.
 
 TO RESTART THE MANAAGEMENT AGENT USING THE client
 run the following commands to restart the vpxa  and hostd
@@ -257,12 +265,19 @@ while grep can be used to search for specific text with single or group file
 df/vdf
 these two commands deal information about the space esxi file system
 
-hostd is an app that runs in the Service Console that is responsible for managing most of the operations on the ESX machine.  It knows about all the VMs that are registered on that host, the luns/vmfs volumes visible by the host, what the VMs are doing, etc.  Most all commands or operations come down from VC through it.  i.e, powering on a VM, VM vMotion, VM creation, etc.
+hostd is an app that runs in the Service Console that is responsible for managing most of the operations 
+on the ESX machine.  
+It knows about all the VMs that are registered on that host, 
+the luns/vmfs volumes visible by the host, what the VMs are doing, etc.  
+Most all commands or operations come down from VC through it.  
+i.e, powering on a VM, VM vMotion, VM creation, etc.
 
-vpxa also runs on the Service Console and talks to VC.  I believe it acts as an intermediary between VC and hostd. I think it also does some housekeeping on the ESX host, but not as much as hostd.
+vpxa also runs on the Service Console and talks to VC.  
+I believe it acts as an intermediary between VC and hostd. 
+I think it also does some housekeeping on the ESX host, but not as much as hostd.
 
 COMMANDs
-esxcli esxcli command list | grep 
+esxcli esxcli command list | grep                            
 
 Remember -h option for esxcfg - * commands
  
@@ -315,12 +330,33 @@ Below steps are are taken from my blog posts Troubleshooting HA
 
         service vmware–aam start
 
-7. Right Click the affected host and click on “Reconfigure for VMWare HA” to re-install the HA agent that particular host.
+7. Right Click the affected host and click on 
+“Reconfigure for VMWare HA” to re-install the HA agent that particular host.
 
-8. Remove the affected host from the cluster. Removing ESX host from the cluster will not be allowed untill that host is put into maintenance mode.
+8. Remove the affected host from the cluster. 
+Removing ESX host from the cluster will not be allowed untill that host is put into maintenance mode.
 
 9.Alternative solution for 3 step is, Goto cluster settings and uncheck the vmware HA in to turnoff the HA in that cluster and re-enable the vmware HA to get the agent installed.
 
 10. For further troubleshooting , review the HA logs under /Var/log/vmware/aam directory.
+
+
+DIAGONISTIC LOGS
+vm-support (stores all logs in locally)
+
+ “Deprecated VMFS Volumes found on host. Please consider upgrading volume(s) to the latest version”. 
+
+ Services.sh restart
+
+ ESXI HOST not respond reasons
+ * due to routing UDP port no 902 ,bad cable and firewall
+ * hostd is service not running (/etc/init.d/hostd restart)
+ * vpax is service not running (/etc/init.d/vpxa restart)
+ * host failed (May reason PSOD)
+
+ A quiesced snapshot is one 
+ where the VMWare Tools are used to access the OS and gather an application consistent snapshot.
+
+
 
 

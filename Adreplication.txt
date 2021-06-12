@@ -25,6 +25,8 @@ invoke-command -computerName (DC1,DC2) -scriptBlock {start-service}
 
 repadmin /replsum
 repadmin /syncall
+FORCE Replication
+repadmin /replicate (destinationdc) (sorucedc) (domainname)
 
 #DNS backup
 set-location 
@@ -41,8 +43,17 @@ Make  SOA referesh interval at 1 min
 
 clear dns cache
 flush and register dns
-ipconfig /flushdns
+ipconfig /fl ushdns
 ipconfig /registerdns
+
+DNS powershell
+#all zones
+get-dnszones
+#Ad integrated
+add-dnsprimaryzone -name "itraki.co.in" -replication "forest"
+
+TROUBLESHOOTING USING dig
+dig -h 
 
 
 BSOD in DC
@@ -69,12 +80,17 @@ Advantages of Active Directory integrated Zones
     Better redundancy due to zone data being copied to all Domain Controllers
     Improved Security if secure dynamic update is enabled
     No need to schedule or manage zone transfers
+STUD zone
+redirect the request that server can answer it
 
 Non-authoritative name servers do not contain original source files of domain’s zone. 
+
 They have a cache file for the domains that is constructed from all the DNS lookups done previously. 
 If a DNS server responded for a DNS query which doesn’t have original file is known as a Non-authoritative answer.
 
-An authoritatIn AD Integrated DNS zone, each server replicates the data with other DNS servers 
+An authoritatIn AD Integrated DNS zone, each server replicates the data with other DNS servers
+Has full copy of the all records for that zone
+can ready only copy  
 in a domain.ive name server is a name server that has the original source files of a domain zone files. 
 The is where the domain administrator has configured the DNS records for a domain. 
 Authoritative DNS server can be master DNS server or its slaves.
@@ -91,3 +107,25 @@ nltest/dclist:(domainname) - to check all DC in domain
 nltest /parentdomain
 
 EVENT ID 1074 to shutdown
+
+Active Directory health check-up
+*replication
+*Orphaned objects
+*DC
+*DNS server and services
+*Sites and Subnets
+*Time services
+
+ Replication procotols
+
+ IP
+ RPC -
+ SMTP
+AD replication troubleshooting
+*DNS 
+*N/W issues
+*Overrated 
+* /authoairzatio 
+To check the Error
+EVENT log
+

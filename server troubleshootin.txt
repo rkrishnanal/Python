@@ -10,3 +10,128 @@ immediately update it with the latest patches via WSUS or SCCM.
 User Account Security Hardening
 Network Security Configuration
 Registry Security Configuration
+
+SECURING ACTIVE DIRECTORY
+1. Local administrator managed server and workstation (using Mircosoft Laps)
+2. Domain passwordword Policy
+3. Default Domain administrator Account spn
+AD admin accounts
+OLD KRBTGT Admin password
+DC auditing
+
+WINDOWS SERVER HUNG 
+the system and application event logs leading up to the hang.
+memory exhaustion will sometimes generate entries in the system log,
+ or a slew of disk errors would indicate a drive issue.
+ the major applications installed on the server. 
+  Review their logs for the same things you were looking for in the main event logs: 
+ any possibly related errors and any specific tasks/processes that were running at the time.
+ RAM utilization increasing, 
+ CPU utilization sustained near 100%, or poor disk metrics such as high response times.
+ 1.Network Problems
+2.System Overload
+3.Configuration Errors
+4.Hardware Issues
+5.Backups
+
+WINDOWS MEMORY DUMP
+    Complete memory dump. -
+    Kernel memory dump. -
+    Small memory dump (64 KB) -
+    Automatic memory dump.-
+
+BSOD Toroubleshooting
+Configure dump files
+
+
+Service Account in Active Directory
+
+A service account is a special user account that an application or service uses to interact with the operating system. 
+Services use the service accounts to log on and make changes to the operating system or the configuration. 
+Through permissions, you can control the actions that the service can perform. 
+The following table identifies categories of service accounts.
+
+Account
+
+Type
+	
+
+Description
+
+Built-in local user account
+	
+
+A built-in user account is a user account that is created automatically during installation. 
+The following three built-in user accounts are used by most services:
+
+    The Local System account (also called the System account) is a member of the local Administrators group.
+    The Local Service account has access rights similar to members of the Users group. 
+    This account accesses network services using a null session with no credentials. 
+    For this reason, this account might not provide sufficient network access for some services.
+    The Network Service account has access rights similar to members of the Users group. 
+    This account accesses network resources using the credentials of the computer account.
+
+When using built-in local user accounts:
+
+    Accounts are automatically created.
+    You do not need to manage or reset account passwords.
+    Multiple services use the same user account, making it difficult to customize security for a specific service.
+
+Domain user account
+	
+
+You can create domain user accounts for use by services. With domain user accounts:
+
+User accounts are managed centrally in Active Directory.
+
+    You can create a single user account for a single service, or share a user account for multiple services.
+    You can grant only the specific privileges required by the service.
+    You must manage account passwords. For example, you will need to periodically reset the account password on the account as well as reset the password used by the service.
+
+Managed service account
+
+
+AND 
+
+
+Virtual account
+	
+
+A managed service account is a new account type available in Windows Server 2008 R2 and Windows 7. A managed service account provides the same benefits of using a domain user account with these improvements:
+
+    Passwords are managed and reset automatically.
+    When the domain is running at the Windows Server 2008 R2 functional level, the service principal name (SPN) doesn’t need to be managed as with local accounts.
+
+When using a managed service account:
+
+    A user account can be used on only one computer (you must create at least one account per computer).
+
+    Each account can be used by multiple services on a computer. You can also create a separate account for each service.
+
+      A virtual account is a new account type available in Windows Server 2008 R2 and Windows 7 Virtual accounts:
+
+    Are not created or deleted.
+    Use a single account for a single service. If you have multiple services that use virtual accounts, there will be a different account for each service.
+    To configure a service to use a virtual service account, simply edit the service properties and configure the account to use an account name of NT SERVICE\ServiceName (where ServiceName matches the name of the service).
+
+To use managed or virtual accounts:
+
+    Computers must be running Windows Server 2008 R2 or Windows 7 for the service to use the managed or virtual account.
+    You must update the Active Directory schema to Windows Server 2008 R2.
+    Domain controllers can be Windows Server 2003, 2008, or 2008 R2. If the domain controller is below Windows Server 2008 R2, you must have the Active Directory Management Gateway Service.
+    If a domain controller is running Windows Server 2008 R2 (or higher), service principal names (SPN) are managed automatically. If you do not have a domain controller running at least Windows Server 2008 R2, you must manage the SPN manually. Password resets are automatically managed for any supported domain controller.
+
+Use the Active Directory module for Windows PowerShell to manage service accounts (and other objects). Common service account cmdlets include:
+
+o New-ADServiceAccount creates a managed service account. 
+By default, accounts are created in the Managed Service Account container in Active Directory (you can also specify an alternate OU for the new accounts).
+
+   o Get-ADServiceAccount displays properties for managed service accounts.
+
+   o Set-ADServiceAccount modifies settings.
+
+   o Remove-ADServiceAccount deletes a managed service account.
+
+   o Install-ADServiceAccount allows the computer to use the managed service account (install the account). Run Uninstall-ADServiceAccount to uninstall the account.
+Advertisements
+Report this ad

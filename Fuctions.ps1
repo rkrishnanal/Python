@@ -11,7 +11,7 @@ Installed version and hostname
 # function Install-Test {
     # param (
         #Parameter help description
-        # [Parameter(Mandatory)]
+         # [Parameter(Mandatory)]
         # [string]$version ,
         # [ValidateSet('1','2')]
         #Parameter help description
@@ -48,4 +48,17 @@ function get-publicip {
     
         
     }
+    $PSVersionTable.PSVersion.Major
+    
+function write-welcome {
+        param (
+        [Parameter(Mandatory)]
+        [string]$name
+        
+    )
+    Write-Host "Welcome Mr. $name"
+    }
+    
+write-welcome | gm
+
     

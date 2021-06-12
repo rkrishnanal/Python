@@ -20,6 +20,55 @@ ip flow verify >>  check packets allow or denied from VM
 next hop >> next hop from target vm to destination ip address  
 effective security rules >> Effective NSG rules applied a network interface
 Also spot vulunerablities for VM caused by unncessary open ports
-packet captiure >> Record all of packets sent and from a VM
+packet captiure >> Record all of packets sent and from a VM and automate remote n/w monitoring
 connection Troubleshoot >> Check TCP connection from VM to a VM,FQDN,URI or IPv4 Address 
 VPN Troubleshoot >> diagonse health of virtual netwrok gateway or connection    
+
+ARM Templates
+Paramater:static data
+variables: dynamic data
+
+
+AZURE MONITOR
+KEY CAPABILITIES
+* Monitor and visualize 
+* Query and Analyze logs
+* Setup Alerts and Actions
+
+
+MONITOR DATA PLATFORM 
+*mertics
+* logs
+
+LOG DATA is data stored in data analytics
+
+DATA types
+Application data
+Guest os Data
+Azure resource data
+Azure monitoring data
+Azure tenant data
+
+AZURE ADVISOR
+
+Gives recommendation for HA,security,performance.opertional Exellence and costs
+
+
+CREATING VNET USING POWERHSELL
+
+get-command  "*network"
+
+$newvnet =new-azvirtualnetwork
+add-azvirtualnetworksubnetconfig
+get-azvirtualnetworksubnetconfig
+
+$newvnet | set-azvirtualnetwork
+
+
+SERVICE ENDPOINTS 
+
+ USED PAAs Offerings access via same vnet only (SQL,STORAGE etc)
+Improves the security of az resource
+Optimal routing
+Internal traffic routing
+simple Setup
